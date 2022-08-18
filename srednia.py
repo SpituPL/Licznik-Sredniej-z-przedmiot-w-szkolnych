@@ -16,13 +16,17 @@ przedmiot = input("Podaj nazwe przedmiotu: ")
 
 while True:
     ocena = float(input("Podaj ocene (kliknij Enter, kiedy skonczysz pisać oceny napisz 0): "))
-    if ocena == 0:
-        srednia = Ocena_Suma / Ocena_Ilosc
-        print("Twoja srednia to:", str(srednia), "z przedmiotu", str(przedmiot) + ".")
-        break
+    if ocena <= 6:
+        if ocena == 0:
+            srednia = Ocena_Suma / Ocena_Ilosc
+            print("Twoja srednia to:", str(srednia), "z przedmiotu", str(przedmiot) + ".")
+            break
+        else:
+            Ocena_Suma = Ocena_Suma + ocena
+            Ocena_Ilosc = Ocena_Ilosc + 1
     else:
-        Ocena_Suma = Ocena_Suma + ocena
-        Ocena_Ilosc = Ocena_Ilosc + 1
+        print("Maxymalna wartosc oceny to 6! spróbuj jeszcze raz!")
+        continue
 
 if historia.writable():
         historia.write(str(przedmiot) + ": " + str(srednia))
